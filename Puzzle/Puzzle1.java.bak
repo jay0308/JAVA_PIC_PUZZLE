@@ -1,0 +1,304 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+class Puzzle1 implements ActionListener 
+{
+	int moves;
+	boolean flag=true;
+	JLabel move,m;
+	JFrame f;
+	JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,set,back;
+	String s;
+	ImageIcon i1=new ImageIcon("1.jpg");
+	ImageIcon i2=new ImageIcon("2.jpg");
+	ImageIcon i3=new ImageIcon("3.jpg");
+	ImageIcon i4=new ImageIcon("4.jpg");
+	ImageIcon i5=new ImageIcon("5.jpg");
+	ImageIcon i6=new ImageIcon("6.jpg");
+	ImageIcon i7=new ImageIcon("7.jpg");
+	ImageIcon i8=new ImageIcon("8.jpg");
+	ImageIcon i9=new ImageIcon("bk.jpg");
+	Icon i;
+	
+	Puzzle1()
+	{
+		f=new JFrame("Puzzle Game");
+		b1=new JButton(new ImageIcon("3.jpg"));
+		b2=new JButton(new ImageIcon("1.jpg"));b3=new JButton(new ImageIcon("5.jpg"));b4=new JButton(new ImageIcon("4.jpg"));
+		b5=new JButton(new ImageIcon("6.jpg"));b6=new JButton(new ImageIcon("8.jpg"));b7=new JButton(new ImageIcon("bk.jpg"));
+		b8=new JButton(new ImageIcon("2.jpg"));b9=new JButton(new ImageIcon("9.jpg"));
+		set=new JButton("Set");
+		move=new JLabel("<html><font color='orange' size=5>Moves: </font></html>");
+		back=new JButton(new ImageIcon("back.png"));
+		m=new JLabel();
+		i=b7.getIcon();
+		b1.setBounds(0,0,100,100);b2.setBounds(100,0,100,100);b3.setBounds(200,0,100,100);b4.setBounds(0,100,100,100);b5.setBounds(100,100,100,100);
+		b6.setBounds(200,100,100,100);b7.setBounds(0,200,100,100);b8.setBounds(100,200,100,100);b9.setBounds(200,200,100,100);
+		set.setBounds(20,310,60,50);
+		back.setBounds(80,310,60,50);
+		move.setBounds(200,310,60,50);
+		m.setBounds(270,312,30,50);
+		f.add(back);
+		f.add(set);f.add(move);f.add(m);
+		f.add(b1);f.add(b2);f.add(b3);f.add(b4);f.add(b5);f.add(b6);f.add(b7);f.add(b8);f.add(b9);
+		back.addActionListener(this);
+		b1.addActionListener(this);b2.addActionListener(this);b3.addActionListener(this);b4.addActionListener(this);b5.addActionListener(this);
+		b6.addActionListener(this);b7.addActionListener(this);b8.addActionListener(this);b9.addActionListener(this);
+		set.addActionListener(this);
+		f.setLayout(null);
+		f.setSize(325,400);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setResizable(false);
+		m.setText(String.valueOf(moves));
+
+		//b[8].setBackground(Color.BLACK);
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		
+		if(e.getSource()!=back&&b1.getIcon()==i1&&b2.getIcon()==i2&&b3.getIcon()==i3&&b4.getIcon()==i4&&b5.getIcon()==i5&&b6.getIcon()==i6&&b7.getIcon()==i7&&b8.getIcon()==i8&&b9.getIcon()==i9)
+		{
+			JOptionPane.showMessageDialog(f,"you made it...");  
+		}
+		if(e.getSource()==b1&&flag)
+		{
+			
+			//b[0].setBackground(Color.BLACK);
+			if(b2.getIcon()==i)
+			{
+				b2.setIcon(b1.getIcon());
+				b1.setIcon(i);
+				moves++;
+				//b[1].setBackground(i);
+			}
+			else if(b4.getIcon()==i)
+			{
+				moves++;
+				b4.setIcon(b1.getIcon());
+				b1.setIcon(i);moves++;
+				//b[3].setBackground(i);
+			}
+		}
+		if(e.getSource()==b2&&flag)
+		{
+			//b[1].setBackground(Color.BLACK);
+			if(b1.getIcon()==i)
+			{
+				moves++;
+				b1.setIcon(b2.getIcon());
+				b2.setIcon(i);
+				//b[1].setBackground(i);
+				
+			}
+			else if(b3.getIcon()==i)
+			{
+
+				moves++;
+				b3.setIcon(b2.getIcon());
+				b2.setIcon(i);
+				//b[1].setBackground(i);
+			}
+			else if(b5.getIcon()==i)
+			{
+				moves++;
+				b5.setIcon(b2.getIcon());
+				b2.setIcon(i);
+				//b[1].setBackground(i);
+			}
+			//b[1].setBackground(Color.RED);
+		}
+		if(e.getSource()==b3&&flag)
+		{
+			//b[2].setBackground(Color.BLACK);
+			if(b2.getIcon()==i)
+			{
+				moves++;
+				b2.setIcon(b3.getIcon());
+				b3.setIcon(i);
+				//b[2].setBackground(i);
+			}
+			else if(b6.getIcon()==i)
+			{
+				moves++;
+				b6.setIcon(b3.getIcon());
+				b3.setIcon(i);
+				//b[2].setBackground(i);
+			}
+			//b[2].setBackground(Color.RED);
+		}
+		if(e.getSource()==b4&&flag)
+		{
+			//b[3].setBackground(Color.BLACK);
+			if(b1.getIcon()==i)
+			{
+				moves++;
+				b1.setIcon(b4.getIcon());
+				b4.setIcon(i);
+				//b[3].setBackground(i);
+			}
+			else if(b7.getIcon()==i)
+			{
+				moves++;
+				b7.setIcon(b4.getIcon());
+				b4.setIcon(i);
+				//b[3].setBackground(i);
+			}//b[3].setBackground(Color.RED);\
+			else if(b5.getIcon()==i)
+			{
+				moves++;
+				b5.setIcon(b4.getIcon());
+				b4.setIcon(i);
+				//b[3].setBackground(i);
+			}
+		}
+		if(e.getSource()==b5&&flag)
+		{
+			//b[4].setBackground(Color.BLACK);
+			if(b2.getIcon()==i)
+			{
+				moves++;
+				b2.setIcon(b5.getIcon());
+				b5.setIcon(i);
+				//b[4].setBackground(i);
+			}
+			else if(b8.getIcon()==i)
+			{
+				moves++;
+				b8.setIcon(b5.getIcon());
+				b5.setIcon(i);
+				//b[4].setBackground(i);
+			}
+			
+			else if(b6.getIcon()==i)
+			{
+				moves++;
+				b6.setIcon(b5.getIcon());
+				b5.setIcon(i);
+				//b[4].setBackground(i);
+			}
+			
+			else if(b4.getIcon()==i)
+			{
+				moves++;
+				b4.setIcon(b5.getIcon());
+				b5.setIcon(i);
+				//b[4].setBackground(i);
+			}//b[4].setBackground(Color.RED);
+
+		}
+		if(e.getSource()==b6&&flag)
+		{
+			//b[5].setBackground(Color.BLACK);
+			if(b9.getIcon()==i)
+			{
+				moves++;
+				b9.setIcon(b6.getIcon());
+				b6.setIcon(i);
+				//b[5].setBackground(i);
+			}
+			else if(b5.getIcon()==i)
+			{
+				moves++;
+				b5.setIcon(b6.getIcon());
+				b6.setIcon(i);
+				//b[5].setBackground(i);
+			}
+			
+			else if(b3.getIcon()==i)
+			{
+				moves++;
+				b3.setIcon(b6.getIcon());
+				b6.setIcon(i);
+				//b[5].setBackground(i);
+			}//b[5].setBackground(Color.RED);
+		}
+		if(e.getSource()==b7&&flag)
+		{
+			//b[6].setBackground(Color.BLACK);
+			if(b4.getIcon()==i)
+			{
+				moves++;
+				b4.setIcon(b7.getIcon());
+				b7.setIcon(i);
+				//b[6].setBackground(i);
+			}
+			else if(b8.getIcon()==i)
+			{
+				moves++;
+				b8.setIcon(b7.getIcon());
+				b7.setIcon(i);
+				//b[6].setBackground(i);
+			}//b[6].setBackground(Color.RED);
+		}
+		if(e.getSource()==b8&&flag)
+		{
+			
+			//b[7].setBackground(Color.BLACK);
+			if(b7.getIcon()==i)
+			{
+				moves++;
+				b7.setIcon(b8.getIcon());
+				b8.setIcon(i);
+				//b[7].setBackground(i);
+			}
+			else if(b9.getIcon()==i)
+			{
+				moves++;
+				b9.setIcon(b8.getIcon());
+				b8.setIcon(i);
+				//b[7].setBackground(i);
+			}	
+			
+			else if(b5.getIcon()==i)
+			{
+				moves++;
+				b5.setIcon(b8.getIcon());
+				b8.setIcon(i);
+				//b[7].setBackground(i);
+			}
+			//b[7].setBackground(Color.RED);
+		}
+		if(e.getSource()==b9&&flag)
+		{
+			//b[8].setBackground(Color.BLACK);
+			if(b8.getIcon()==i)
+			{
+				moves++;
+			b8.setIcon(b9.getIcon());
+			b9.setIcon(i);
+				//b[8].setBackground(i);
+			}
+			else if(b6.getIcon()==i)
+			{
+				moves++;
+			b6.setIcon(b9.getIcon());
+			b9.setIcon(i);
+			//b[8].setBackground(i);
+			}//b[8].setBackground(Color.RED);*/
+		}
+		if(e.getSource()==set)
+		{
+			flag=false;
+			moves=0;
+			b1.setIcon(i1);b2.setIcon(i2);b3.setIcon(i3);b4.setIcon(i4);b5.setIcon(i5);b6.setIcon(i6);
+			b7.setIcon(i7);b8.setIcon(i8);b9.setIcon(i9);
+			JOptionPane.showMessageDialog(f,"you made it...");
+		}
+		if(e.getSource()==back)
+		{
+			flag=true;
+			b1.setIcon(i5);b2.setIcon(i8);b3.setIcon(i3);b4.setIcon(i6);b5.setIcon(i1);b6.setIcon(i4);
+			b7.setIcon(i7);b8.setIcon(i2);b9.setIcon(i9);
+			moves=0;
+			i=b9.getIcon();
+		}
+		
+		m.setText(String.valueOf(moves));
+	}
+	public static void main(String[] args) 
+	{
+		new Puzzle1();
+	}
+}
